@@ -24,6 +24,7 @@ odoo_company_id = 1
 odoo_currency_id = 2
 odoo_income_id = 21
 odoo_tax_id = 16
+journal_id = 1
 
 
 # Global Variables
@@ -228,7 +229,8 @@ def create_invoice_in_odoo(invoice, customer_id):
         "invoice_date": str(invoice["InvoiceDate"].date()),
         "company_id": odoo_company_id,
         "move_name": invoice["InvoiceNumber"],
-        "invoice_date_due": str(due_date)
+        "invoice_date_due": str(due_date),
+        "journal_id": journal_id
     }
 
     new_odoo_invoice_id = client.create("account.move", invobj)
